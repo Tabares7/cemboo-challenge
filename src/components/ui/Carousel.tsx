@@ -29,6 +29,7 @@ interface CarouselProps {
   condition?: string;
   card: string;
   slides: [number, number];
+  display?: string;
 }
 
 const Carousel: React.FC<CarouselProps> = ({
@@ -36,6 +37,7 @@ const Carousel: React.FC<CarouselProps> = ({
   condition,
   card,
   slides,
+  display = "vertical",
 }) => {
   const [deviceType, setDeviceType] = useState(1);
   const [moviesToShow, setMoviesToShow] = useState<Movie[]>([]);
@@ -79,7 +81,11 @@ const Carousel: React.FC<CarouselProps> = ({
               <MovieCardTiny
                 title={movie.title}
                 key={movie.id}
-                poster={movie.thumbnail_horizontal}
+                poster={
+                  display === "vertical"
+                    ? movie.thumbnail_horizontal
+                    : movie.thumbnail_vertical
+                }
                 rate={movie.rating}
               />
             ))
@@ -88,7 +94,11 @@ const Carousel: React.FC<CarouselProps> = ({
                 year={movie.release_year}
                 key={movie.id}
                 title={movie.title}
-                poster={movie.thumbnail_horizontal}
+                poster={
+                  display === "vertical"
+                    ? movie.thumbnail_horizontal
+                    : movie.thumbnail_vertical
+                }
                 rate={movie.rating}
                 description={movie.synopsis}
               />

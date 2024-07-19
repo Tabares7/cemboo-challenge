@@ -3,9 +3,10 @@
   margin: 0 auto;
   text-align: center;
 }
-body{
-  background-color: #111112;
+body {
+  background: linear-gradient(150deg, #001c2f , #033032, #001c2f);
 }
+
 
 .logo {
   height: 6em;
