@@ -6,7 +6,7 @@ import movies from "../movies";
 export const SciFi = () => {
   return (
     <section className="p-5">
-      <Title title="Drama Movies" color="white" size="lg" weight="bold" />
+      <Title title="Sci-Fi Movies" color="white" size="lg" weight="bold" />
       <Carousel
         movies={movies}
         condition="Sci-Fi"

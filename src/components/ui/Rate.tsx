@@ -26,7 +26,7 @@ export const Rate = ({
 
   return (
     <span
-      className={`text-sm  md:text-${size} font-${weight} text-${color} ${defineColor()} px-2 rounded-xl bg-opacity-80 ${className}`}
+      className={`text-sm  md:text-${size} font-${weight} text-${color} ${defineColor()} px-2 rounded-xl  ${className}`}
     >
       {defineMovieRate()}
     </span>

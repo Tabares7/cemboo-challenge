@@ -6,6 +6,7 @@ import { Hero } from "./components/Hero";
 import { UiNavbar } from "./components/ui/Navbar";
 import { Recomended } from "./components/Recomended";
 import { Drama } from "./components/Drama";
+import { SciFi } from "./components/SciFi";
 
 console.log(movies[1]);
 function App() {
@@ -13,6 +14,7 @@ function App() {
     <main className="">
       <Hero />
       <Recomended />
+      <SciFi />
       <Drama />
     </main>
   );
