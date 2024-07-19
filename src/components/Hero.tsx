@@ -20,7 +20,7 @@ export const Hero = () => {
         <p className="text-sm mb-3">{movie.synopsis}</p>
         <Button icon={<FaPlay />} text="Watch Now" />
       </div>
-      <div className="bg-gradient-to-t from-[#01001e] to-transparent h-2/3 w-full absolute bottom-0 z-5"></div>
+      <div className="bg-gradient-to-t from-[#111112] to-transparent h-2/3 w-full absolute bottom-0 z-5"></div>
     </section>
   );
 };

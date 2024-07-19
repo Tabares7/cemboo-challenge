@@ -5,11 +5,13 @@ export const Rate = ({
   color,
   size,
   weight,
+  className,
 }: {
   rate: number;
   color: string;
   size: string;
   weight: string;
+  className?: string;
 }) => {
   const defineMovieRate = () => {
     return rate?.toFixed(1) || "";
@@ -24,7 +26,7 @@ export const Rate = ({
 
   return (
     <span
-      className={`text-sm  md:text-${size} font-${weight} text-${color} ${defineColor()} px-2 rounded-xl bg-opacity-80`}
+      className={`text-sm  md:text-${size} font-${weight} text-${color} ${defineColor()} px-2 rounded-xl bg-opacity-80 ${className}`}
     >
       {defineMovieRate()}
     </span>
