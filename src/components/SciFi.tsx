@@ -3,11 +3,16 @@ import { Title } from "./ui/Title";
 import Carousel from "./ui/Carousel";
 import movies from "../movies";
 
-export const Drama: React.FC = () => {
+export const SciFi = () => {
   return (
     <section className="p-5">
       <Title title="Drama Movies" color="white" size="lg" weight="bold" />
-      <Carousel movies={movies} condition="Drama" card="tiny" slides={[3, 6]} />
+      <Carousel
+        movies={movies}
+        condition="Sci-Fi"
+        card="tiny"
+        slides={[3, 6]}
+      />
     </section>
   );
 };

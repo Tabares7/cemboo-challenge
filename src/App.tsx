@@ -5,6 +5,7 @@ import movies from "./movies";
 import { Hero } from "./components/Hero";
 import { UiNavbar } from "./components/ui/Navbar";
 import { Recomended } from "./components/Recomended";
+import { Drama } from "./components/Drama";
 
 console.log(movies[1]);
 function App() {
@@ -12,7 +13,7 @@ function App() {
     <main className="">
       <Hero />
       <Recomended />
-      {/* <Drama /> */}
+      <Drama />
     </main>
   );
 }
