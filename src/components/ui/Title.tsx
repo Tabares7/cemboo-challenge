@@ -30,7 +30,9 @@ export const Title = ({
   };
 
   return (
-    <h1 className={`text-left text-${color} text-${size} font-${weight}`}>
+    <h1
+      className={`text-left text-${color} text-${size} text-3xl font-${weight}`}
+    >
       {renderText()}
       {large && title.length > large && (
         <button onClick={handleShowClick} className="text-gray-500">

@@ -3,20 +3,21 @@ import movies from "../movies";
 import { Rate } from "./ui/Rate";
 import { Button } from "./ui/Button";
 import { FaPlay, FaPlus } from "react-icons/fa6";
+import { VideoModal } from "./ui/VideoModal";
 
 export const Hero = () => {
   const movie = movies[9];
 
   return (
-    <section className="relative m-10 overflow-hidden mt-20">
+    <section className="relative m-10 overflow-hidden rounded-xl mt-20">
       <img
         src={movie.thumbnail_horizontal}
         alt={movie.title}
-        className="w-full rounded-xl overflow-hidden"
+        className="w-full  overflow-hidden"
       />
       <div className="absolute inset-0 bottom-10 flex flex-col justify-end items-center text-white z-10 p-5">
         <Rate rate={movie.rating} color="white" size="xl" weight="bold" />
-        <h1 className="font-bold text-2xl text-white uppercase">
+        <h1 className="font-bold text-3xl text-white uppercase">
           {movie.title}
         </h1>
         <p className="text-sm mb-3">
@@ -27,10 +28,10 @@ export const Hero = () => {
           ))}
         </p>
         <div className="flex justify-center gap-10 mx-auto">
-          <Button
-            icon={<FaPlay />}
+          <VideoModal
+            videoId="fUgxxhI_bvc"
+            classNameBtn="py-2 flex items-center gap-2 px-4 text-sm font-semibold rounded-lg bg-white text-black hover:bg-white hover:text-black"
             text="Watch Now"
-            className="bg-white bg-opacity-100 text-black"
           />
           <Button
             icon={<FaPlus />}
