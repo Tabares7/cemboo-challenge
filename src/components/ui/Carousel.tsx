@@ -74,7 +74,7 @@ const Carousel: React.FC<CarouselProps> = ({
   };
 
   return (
-    <div className="w-full max-w-screen-md mx-auto mt-5">
+    <div className="w-full max-w-screen mt-5">
       <Slider {...settings}>
         {card === "tiny"
           ? moviesToShow.map((movie) => (
