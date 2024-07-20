@@ -8,7 +8,7 @@ export const Hero = () => {
   const movie = movies[9];
 
   return (
-    <section className="relative m-10 overflow-hidden">
+    <section className="relative m-10 overflow-hidden mt-20">
       <img
         src={movie.thumbnail_horizontal}
         alt={movie.title}
@@ -30,11 +30,13 @@ export const Hero = () => {
           <Button
             icon={<FaPlay />}
             text="Watch Now"
-            bg="white"
-            opacity="100"
-            textColor="black"
+            className="bg-white bg-opacity-100 text-black"
           />
-          <Button icon={<FaPlus />} text="My List" bg="gray-100" />
+          <Button
+            icon={<FaPlus />}
+            text="My List"
+            className="bg-gray-100 bg-opacity-10"
+          />
         </div>
       </div>
       <div className="bg-gradient-to-t from-[#111112] to-transparent h-2/3 w-full absolute bottom-0 z-5"></div>
