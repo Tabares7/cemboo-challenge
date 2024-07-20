@@ -11,7 +11,7 @@ export const Drama: React.FC = () => {
         movies={movies}
         condition="Drama"
         card="tiny"
-        slides={[2, 6]}
+        slides={[2, 3]}
         display="horizontal"
       />
     </section>

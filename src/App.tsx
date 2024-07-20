@@ -7,6 +7,7 @@ import Navbar from "./components/ui/Navbar";
 import { Recomended } from "./components/Recomended";
 import { Drama } from "./components/Drama";
 import { SciFi } from "./components/SciFi";
+import { Footer } from "./components/ui/Footer";
 
 console.log(movies[1]);
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <SciFi />
         <Drama />
       </main>
+      <Footer />
     </>
   );
 }

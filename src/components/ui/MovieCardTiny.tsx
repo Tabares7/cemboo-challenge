@@ -8,7 +8,7 @@ export const MovieCardTiny = ({ poster, rate, title }) => {
     <div className="mr-5 overflow-hidden">
       <div className="relative ">
         <img src={poster} alt={title} className="w-full rounded-xl " />
-        <RiNetflixFill className="text-red-600 absolute top-3 left-3" />
+        <RiNetflixFill className="text-red-600 absolute top-3 left-3 md:top-5 md:left-5 md:text-2xl" />
         <Rate
           rate={rate}
           color="white"

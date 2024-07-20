@@ -9,7 +9,7 @@ import { VideoModal } from "./ui/VideoModal";
 export const Hero = () => {
   const [deviceType, setDeviceType] = useState(1);
 
-  const movie = movies[9];
+  const movie = movies[14];
 
   useEffect(() => {
     const handleResize = () => {
@@ -51,7 +51,7 @@ export const Hero = () => {
           ))}
         </p>
         {deviceType ? null : <p className="text-sm mb-3">{movie.synopsis}</p>}
-        <div className="flex justify-center gap-10 mx-auto md:mx-0">
+        <div className="flex justify-center md:justify-normal gap-10 mx-auto md:mx-0">
           <VideoModal
             videoId="fUgxxhI_bvc"
             classNameBtn="py-2 flex items-center gap-2 px-4 text-sm font-semibold rounded-lg bg-white text-black hover:bg-white hover:text-black"

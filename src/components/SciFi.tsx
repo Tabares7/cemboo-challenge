@@ -11,7 +11,7 @@ export const SciFi = () => {
         movies={movies}
         condition="Sci-Fi"
         card="tiny"
-        slides={[3, 6]}
+        slides={[3, 5]}
       />
     </section>
   );
