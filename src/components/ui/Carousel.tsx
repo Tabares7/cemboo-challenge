@@ -1,4 +1,4 @@
-import React, { useState, useEffect, ReactNode } from "react";
+import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -27,9 +27,9 @@ interface Movie {
 interface CarouselProps {
   movies: Movie[];
   condition?: string;
-  card: string;
-  slides: [number, number];
-  display?: string;
+  card: "tiny" | "regular"; // Change type to union type for stricter control
+  slides: [number, number]; // Tuple type is correct here
+  display?: "vertical" | "horizontal"; // Use union type for options
 }
 
 const Carousel: React.FC<CarouselProps> = ({
@@ -50,25 +50,20 @@ const Carousel: React.FC<CarouselProps> = ({
 
     handleResize();
     window.addEventListener("resize", handleResize);
-
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   useEffect(() => {
-    if (condition) {
-      const filteredMovies = movies.filter((movie) =>
-        movie.genre.includes(condition)
-      );
-      setMoviesToShow(filteredMovies);
-    } else {
-      setMoviesToShow(movies);
-    }
+    const filteredMovies = condition
+      ? movies.filter((movie) => movie.genre.includes(condition))
+      : movies;
+    setMoviesToShow(filteredMovies);
   }, [movies, condition]);
 
   const settings = {
     infinite: false,
     speed: 500,
-    slidesToShow: deviceType ? slides[0] : slides[1], // Adjust number of slides to show based on device
+    slidesToShow: deviceType ? slides[0] : slides[1],
     slidesToScroll: 2,
     arrows: false,
   };
@@ -76,33 +71,33 @@ const Carousel: React.FC<CarouselProps> = ({
   return (
     <div className="w-full max-w-screen mt-5">
       <Slider {...settings}>
-        {card === "tiny"
-          ? moviesToShow.map((movie) => (
-              <MovieCardTiny
-                title={movie.title}
-                key={movie.id}
-                poster={
-                  display === "vertical"
-                    ? movie.thumbnail_horizontal
-                    : movie.thumbnail_vertical
-                }
-                rate={movie.rating}
-              />
-            ))
-          : moviesToShow.map((movie) => (
-              <MovieCard
-                year={movie.release_year}
-                key={movie.id}
-                title={movie.title}
-                poster={
-                  display === "vertical"
-                    ? movie.thumbnail_horizontal
-                    : movie.thumbnail_vertical
-                }
-                rate={movie.rating}
-                description={movie.synopsis}
-              />
-            ))}
+        {moviesToShow.map((movie) =>
+          card === "tiny" ? (
+            <MovieCardTiny
+              key={movie.id}
+              title={movie.title}
+              poster={
+                display === "vertical"
+                  ? movie.thumbnail_horizontal
+                  : movie.thumbnail_vertical
+              }
+              rate={movie.rating}
+            />
+          ) : (
+            <MovieCard
+              key={movie.id}
+              title={movie.title}
+              year={movie.release_year}
+              poster={
+                display === "vertical"
+                  ? movie.thumbnail_horizontal
+                  : movie.thumbnail_vertical
+              }
+              rate={movie.rating}
+              description={movie.synopsis}
+            />
+          )
+        )}
       </Slider>
     </div>
   );

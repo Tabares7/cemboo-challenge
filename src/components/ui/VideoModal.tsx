@@ -4,7 +4,7 @@ import YouTube from "react-youtube";
 import { FaPlay } from "react-icons/fa";
 import { useMediaQuery } from "react-responsive";
 
-// modal styles
+// Define custom styles for the modal in desktop and mobile configurations
 const customStyles = {
   content: {
     color: "white",
@@ -18,51 +18,38 @@ const customStyles = {
     transform: "translate(-50%, -50%)",
     width: "80%",
     maxWidth: "640px",
-    zIndex: 10000,
     border: "none",
+    zIndex: 10000, // Ensure modal content is above other elements
   },
   overlay: {
-    backgroundColor: "rgba(0, 0, 0, 0.75)",
-    zIndex: 9999,
+    backgroundColor: "rgba(0, 0, 0, 0.75)", // Semi-transparent overlay
+    zIndex: 9999, // Ensure overlay is below modal content
   },
 };
 
 const customStylesMobile = {
-  content: {
-    color: "white",
-    backgroundColor: "transparent",
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    padding: "0px",
-    transform: "translate(-50%, -50%)",
-    width: "90%",
-    maxWidth: "100%",
-    border: "none",
-    zIndex: 10000, // high z-index to ensure it's above other elements
-  },
-  overlay: {
-    backgroundColor: "rgba(0, 0, 0, 0.75)",
-    zIndex: 9999, //high z-index to ensure it's above other elements
-  },
+  ...customStyles.content, // Inherit desktop styles and override as necessary
+  width: "90%",
+  maxWidth: "100%",
 };
 
+// Set the app element to hide from accessibility tools when modal is open
 Modal.setAppElement("#root");
 
-export const VideoModal = ({
-  videoId,
-  classNameModal,
-  classNameBtn,
-  text,
-  title,
-}: {
+interface VideoModalProps {
   videoId: string;
   classNameModal?: string;
   classNameBtn: string;
   text?: string;
   title: string;
+}
+
+export const VideoModal: React.FC<VideoModalProps> = ({
+  videoId,
+  classNameModal,
+  classNameBtn,
+  text,
+  title,
 }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const isMobile = useMediaQuery({ maxWidth: 767 });
@@ -76,28 +63,34 @@ export const VideoModal = ({
   };
 
   const opts = {
-    height: isMobile ? "250" : "390",
-    width: isMobile ? "100%" : "640",
+    height: isMobile ? "250" : "390", // Adjust player height based on device
+    width: isMobile ? "100%" : "640", // Adjust player width based on device
     playerVars: {
-      autoplay: 1,
+      autoplay: 1, // Auto-play the video when modal is opened
     },
   };
 
   return (
-    <div className={`${classNameModal} bg-none`}>
-      <button className={`${classNameBtn} flex gap-3`} onClick={openModal}>
-        <FaPlay />
-        {text}
+    <div className={classNameModal}>
+      <button
+        className={`${classNameBtn} flex items-center gap-3`}
+        onClick={openModal}
+      >
+        <FaPlay /> {text}
       </button>
 
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
-        style={isMobile ? customStylesMobile : customStyles}
-        contentLabel="YouTube Video"
+        style={{
+          content: isMobile ? customStylesMobile : customStyles.content,
+          overlay: customStyles.overlay,
+        }}
+        contentLabel={`${title} Video Modal`} // Accessible label for screen readers
       >
         <YouTube videoId={videoId} opts={opts} />
-        <p className="p-3 font-bold md:text-3xl">{title}</p>
+        {/* Provide an explicit close button */}
+        <p className="p-3 font-bold text-3xl">{title}</p>
       </Modal>
     </div>
   );

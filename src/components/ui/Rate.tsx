@@ -1,17 +1,20 @@
 import React from "react";
 
-export const Rate = ({
+interface RateProps {
+  rate: number;
+  color: string; // This should be a valid Tailwind CSS color, not just any string.
+  size: "sm" | "md" | "lg" | "xl"; // Restricting to known sizes for better type safety.
+  weight: "light" | "normal" | "medium" | "semibold" | "bold"; // Similarly, restricting to known font weights.
+  className?: string;
+}
+
+// Component to display a movie rating with dynamic styling based on the rating value.
+export const Rate: React.FC<RateProps> = ({
   rate,
   color,
   size,
   weight,
   className,
-}: {
-  rate: number;
-  color: string;
-  size: string;
-  weight: string;
-  className?: string;
 }) => {
   const defineMovieRate = () => {
     return rate?.toFixed(1) || "";

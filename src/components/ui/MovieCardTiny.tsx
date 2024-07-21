@@ -32,7 +32,7 @@ export const MovieCardTiny: React.FC<MovieCardTinyProps> = ({
         <Rate
           rate={rate}
           color="white"
-          size="xs"
+          size="sm"
           weight="light"
           className="absolute bottom-3 right-3 z-10"
         />

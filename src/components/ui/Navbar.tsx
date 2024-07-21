@@ -1,21 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { IoSearchOutline } from "react-icons/io5";
 
 const Navbar = () => {
   const [navbarBg, setNavbarBg] = useState(false);
 
+  // Handle dynamic background change on scroll
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 100) {
-        setNavbarBg(true);
-      } else {
-        setNavbarBg(false);
-      }
+      // Toggles navbar background based on scroll position
+      setNavbarBg(window.scrollY > 100);
     };
 
+    // Add scroll listener when component mounts
     window.addEventListener("scroll", handleScroll);
 
-    // Cleanup event listener
+    // Cleanup the event listener when component unmounts
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -30,12 +29,16 @@ const Navbar = () => {
             : "bg-transparent text-white"
         }`}
       >
+        {/* Branding area */}
         <a href="#" className="flex items-center space-x-3 rtl:space-x-reverse">
           <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
             Jane's Profile
           </span>
         </a>
+
+        {/* Responsive navigation toggle buttons and search icons */}
         <div className="flex md:order-2">
+          {/* Toggle button for mobile devices */}
           <button
             type="button"
             data-collapse-toggle="navbar-search"
@@ -60,6 +63,8 @@ const Navbar = () => {
             </svg>
             <span className="sr-only">Search</span>
           </button>
+
+          {/* Search icon for larger screens */}
           <div className="relative hidden md:block ">
             <IoSearchOutline className="text-xl" />
           </div>
@@ -88,28 +93,14 @@ const Navbar = () => {
             </svg>
           </button>
         </div>
+
+        {/* Collapsible menu for navigation links */}
         <div
           className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
           id="navbar-search"
         >
+          {/* Search input field visible on mobile when expanded */}
           <div className="relative mt-3 md:hidden">
-            <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-              <svg
-                className="w-4 h-4 text-gray-500 dark:text-gray-400"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-                />
-              </svg>
-            </div>
             <input
               type="text"
               id="search-navbar"
@@ -117,6 +108,8 @@ const Navbar = () => {
               placeholder="Search..."
             />
           </div>
+
+          {/* Navigation links, dynamically styled for different states */}
           <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg  md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0  dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
             <li>
               <a

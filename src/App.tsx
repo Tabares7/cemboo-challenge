@@ -1,23 +1,22 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./App.css";
 
 import movies from "./movies";
-import { Hero } from "./components/Hero";
 import Navbar from "./components/ui/Navbar";
-import { Recomended } from "./components/Recomended";
-import { Drama } from "./components/Drama";
+import { Hero } from "./components/Hero";
+import { Recommended } from "./components/Recommended";
 import { SciFi } from "./components/SciFi";
+import { Drama } from "./components/Drama";
 import { Footer } from "./components/ui/Footer";
 
-console.log(movies[1]);
-
+// Application main structure with primary components displayed in sequence.
 const App: React.FC = () => {
   return (
     <>
       <Navbar />
       <main className="px-0 md:px-20">
         <Hero />
-        <Recomended />
+        <Recommended />
         <SciFi />
         <Drama />
       </main>

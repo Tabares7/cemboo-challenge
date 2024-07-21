@@ -1,40 +1,41 @@
 import React, { useState } from "react";
 
-export const Title = ({
+interface TitleProps {
+  title: string;
+  color: string; // Consider using a specific set of color classes to ensure compatibility with Tailwind.
+  weight: "light" | "normal" | "medium" | "semibold" | "bold"; // Define specific allowed values.
+  size: "sm" | "md" | "lg" | "xl"; // Define specific allowed sizes.
+  large?: number; // Number of characters at which the text will be truncated.
+}
+
+export const Title: React.FC<TitleProps> = ({
   title,
   color,
   weight,
   size,
   large,
-}: {
-  title: string;
-  color: string;
-  weight: string;
-  size: string;
-  large?: number;
 }) => {
   const [showFullText, setShowFullText] = useState(false);
 
   const handleShowClick = () => {
-    setShowFullText((prevState) => !prevState);
+    setShowFullText(!showFullText);
   };
 
   // Function to render the text
   const renderText = (): string => {
     if (showFullText || !large || title.length <= large) {
       return title;
-    } else {
-      // Show characters until the large number
-      return `${title.substring(0, large)} `;
     }
+    // Show characters until the 'large' number
+    return `${title.substring(0, large)}...`;
   };
 
   return (
-    <h1 className={`text-left text-${color}  text-3xl font-${weight}`}>
+    <h1 className={` text-${color} font-${weight} text-left text-3xl`}>
       {renderText()}
       {large && title.length > large && (
         <button onClick={handleShowClick} className="text-gray-500">
-          {showFullText ? "Show less" : "..."}
+          {showFullText ? "Show less" : "Show more"}
         </button>
       )}
     </h1>
