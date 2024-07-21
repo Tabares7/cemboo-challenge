@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./App.css";
 
 import movies from "./movies";
@@ -10,11 +10,12 @@ import { SciFi } from "./components/SciFi";
 import { Footer } from "./components/ui/Footer";
 
 console.log(movies[1]);
-function App() {
+
+const App: React.FC = () => {
   return (
     <>
       <Navbar />
-      <main className="">
+      <main className="px-0 md:px-20">
         <Hero />
         <Recomended />
         <SciFi />
@@ -23,6 +24,6 @@ function App() {
       <Footer />
     </>
   );
-}
+};
 
 export default App;

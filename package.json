@@ -12,8 +12,10 @@
   "dependencies": {
     "@material-tailwind/react": "^2.1.9",
     "@preline/overlay": "^2.3.0",
+    "axios": "^1.7.2",
     "flowbite": "^2.4.1",
     "flowbite-react": "^0.10.1",
+    "http-proxy-middleware": "^3.0.0",
     "node-sass": "^9.0.0",
     "preline": "^2.3.0",
     "react": "^18.3.1",

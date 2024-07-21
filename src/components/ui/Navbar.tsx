@@ -24,7 +24,7 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 w-full z-20 md:right-0">
       <div
-        className={`max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-4 px-6 transition-colors duration-300 ${
+        className={`md:px-20 px-5 flex flex-wrap items-center justify-between mx-auto py-4  transition-colors duration-300 ${
           navbarBg
             ? "bg-[#033032] bg-opacity-100 text-white dark:bg-gray-900"
             : "bg-transparent text-white"

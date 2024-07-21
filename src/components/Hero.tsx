@@ -24,7 +24,7 @@ export const Hero = () => {
   }, []);
 
   return (
-    <section className="relative m-10 overflow-hidden rounded-xl mt-20">
+    <section className="relative m-10 md:mx-5 overflow-hidden rounded-xl mt-20">
       <img
         src={deviceType ? movie.thumbnail_horizontal : movie.thumbnail_vertical}
         alt={movie.title}
@@ -56,6 +56,7 @@ export const Hero = () => {
             videoId="fUgxxhI_bvc"
             classNameBtn="py-2 flex items-center gap-2 px-4 text-sm font-semibold rounded-lg bg-white text-black hover:bg-white hover:text-black"
             text="Watch Now"
+            title={movie.title}
           />
           <Button
             icon={<FaPlus />}
